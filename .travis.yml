@@ -16,6 +16,7 @@ android:
 
 before_install:
   - yes | sdkmanager "platforms;android-28"
+  - chmod +x gradlew
 
 deploy:
   provider: releases
