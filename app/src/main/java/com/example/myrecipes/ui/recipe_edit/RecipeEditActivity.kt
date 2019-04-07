@@ -5,7 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import javax.inject.Inject
 
 class RecipeEditActivity: AppCompatActivity(), RecipeEditScreen {
-    @Inject
+
+   @Inject
     lateinit var recipeEditPresenter: RecipeEditPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,10 @@ class RecipeEditActivity: AppCompatActivity(), RecipeEditScreen {
     override fun onStop() {
         super.onStop()
         recipeEditPresenter.detachScreen()
+    }
+
+    override fun showRecipe() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

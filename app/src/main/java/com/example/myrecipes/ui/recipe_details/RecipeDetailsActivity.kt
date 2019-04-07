@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import javax.inject.Inject
 
 class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
+
     @Inject
     lateinit var recipeDetailsPresenter: RecipeDetailsPresenter
 
@@ -21,4 +22,9 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
         super.onStop()
         recipeDetailsPresenter.detachScreen()
     }
+
+    override fun showRecipe() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }
