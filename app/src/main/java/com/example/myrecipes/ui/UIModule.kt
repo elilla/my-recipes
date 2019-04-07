@@ -1,6 +1,7 @@
 package com.example.myrecipes.ui
 
 import android.content.Context
+import com.example.myrecipes.interactor.recipes.RecipesInteractor
 import com.example.myrecipes.ui.main.MainPresenter
 import dagger.Module
 import dagger.Provides
@@ -16,5 +17,5 @@ class UIModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun mainPresenter() = MainPresenter()
+    fun mainPresenter(recipesInteractor: RecipesInteractor) = MainPresenter(recipesInteractor)
 }
