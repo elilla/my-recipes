@@ -26,15 +26,14 @@ class RoomRepository @Inject constructor() : Repository {
 
     override fun saveRecipe(recipe: Recipe) {
         return recipeDao.saveRecipe(recipe)
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun updateRecipes(recipes: List<Recipe>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return recipeDao.updateRecipes(recipes)
     }
 
     override fun removeRecipes(recipe: Recipe) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return recipeDao.removeRecipe(recipe)
     }
 
 

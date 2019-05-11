@@ -2,6 +2,7 @@ package com.example.myrecipes.ui.recipe_details
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.example.myrecipes.R
 import javax.inject.Inject
 
 class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
@@ -11,6 +12,7 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_details)
     }
 
     override fun onStart() {

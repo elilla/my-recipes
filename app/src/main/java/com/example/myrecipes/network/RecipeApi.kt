@@ -13,8 +13,8 @@ interface RecipeApi {
     fun createRecipe(@Body recipe: Recipe): Call<ResponseBody>
 
     @PUT("Recipe/{recipeId}")
-    fun updateRecipe(@Path("recipeId") id: String?, @Body recipe: Recipe): Call<ResponseBody>
+    fun updateRecipe(@Path("recipeId") id: Long?, @Body recipe: Recipe): Call<ResponseBody>
 
     @DELETE("Recipe/{recipeId}")
-    fun deleteRecipe(@Path("id") id: String?): Call<ResponseBody>
+    fun deleteRecipe(@Path("id") id: Long?): Call<ResponseBody>
 }

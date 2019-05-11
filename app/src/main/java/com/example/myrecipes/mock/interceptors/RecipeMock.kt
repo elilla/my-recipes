@@ -32,18 +32,13 @@ object RecipeMock {
 
         // TODO every endpoint
         if (uri.path == NetworkConfig.ENDPOINT_PREFIX + "recipe" && request.method() == "GET") {
-            val recipeList = listOf(
-                    Recipe("1", TITLE1, IMAGE1, INGREDIENT_LIST1, DESCRIPTION1)
-            )
 
-            responseString = gson.toJson(recipeList)
+            responseString = gson.toJson("asd");
             responseCode = 200
         } else if (uri.path == NetworkConfig.ENDPOINT_PREFIX + "recipe" && request.method() == "POST") {
             // TODO
-            val recipeList = listOf(
-                    Recipe("1", TITLE1, IMAGE1, INGREDIENT_LIST1, DESCRIPTION1)
-            )
-            responseString = gson.toJson(recipeList)
+
+            responseString = gson.toJson("asd");
             responseCode = 200
         } else {
             responseString = "ERROR"

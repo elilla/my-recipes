@@ -2,7 +2,7 @@ package com.example.myrecipes.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Image(
+class Image(
     @SerializedName("url")
     var url: String? = null,
     @SerializedName("height")
