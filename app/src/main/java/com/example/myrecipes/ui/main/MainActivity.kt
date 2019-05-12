@@ -12,11 +12,10 @@ import com.example.myrecipes.R
 import com.example.myrecipes.injector
 import com.example.myrecipes.model.Recipe
 import com.example.myrecipes.ui.recipe_details.RecipeDetailsActivity
+import com.example.myrecipes.ui.recipe_edit.RecipeEditActivity
 import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.FieldPosition
-import java.util.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainScreen {
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity(), MainScreen {
     }
 
     override fun addNewRecipe() {
-        val intent = Intent(this, RecipeDetailsActivity::class.java)
+        val intent = Intent(this, RecipeEditActivity::class.java)
         startActivity(intent)
     }
 

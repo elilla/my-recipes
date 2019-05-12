@@ -6,9 +6,70 @@
                                              android:layout_height="match_parent">
 
 
+    <EditText
+            android:id="@+id/titleText"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:layout_width="0dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="14dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="83dp"
+            app:layout_constraintBottom_toTopOf="@+id/ingredientsList">
+    </EditText>
     <Button
-            android:text="@string/update"
+            android:text="@string/save"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="104dp"
-            tools:layout_editor_absoluteX="269dp" android:id="@+id/updateButton"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/saveButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+            android:id="@+id/pictureText"
+            android:layout_height="wrap_content"
+            android:hint="@string/picture_url"
+            android:inputType="textUri"
+            android:layout_width="0dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="80dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0">
+    </EditText>
+
+    <EditText
+            android:id="@+id/descriptionText"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="280dp" app:layout_constraintTop_toBottomOf="@+id/pictureText"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0">
+    </EditText>
+
+    <ListView
+            android:id="@+id/ingredientsList"
+            android:layout_height="0dp" android:layout_width="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/titleText"
+            android:layout_marginBottom="404dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="1dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp" android:layout_marginRight="1dp"/>
+    <Button
+            android:text="@string/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelButton"
+            app:layout_constraintBaseline_toBaselineOf="@+id/saveButton"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"/>
+    <Button
+            android:text="@string/add_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addIngredientsButton"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionText"/>
 </android.support.constraint.ConstraintLayout>

@@ -4,4 +4,11 @@
     <string name="recipe_images">Recipe Images</string>
     <string name="delete">delete</string>
     <string name="update">update</string>
+    <string name="title">Title</string>
+    <string name="cancel">Cancel</string>
+    <string name="description">Description</string>
+    <string name="picture_url">Picture URL</string>
+    <string name="add_ingredients">Add ingredients</string>
+    <string name="save">Save</string>
+    <string name="ingredients">Ingredients</string>
 </resources>

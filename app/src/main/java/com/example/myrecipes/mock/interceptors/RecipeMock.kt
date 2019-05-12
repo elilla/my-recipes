@@ -21,8 +21,9 @@ object RecipeMock {
     val TITLE1 = "Mákosguba"
     val IMAGE1 = Image("http://www.mindmegette.hu/images/231/O/img_4557.jpg", 100, 100);
     val INGREDIENT1 = Ingredient("mák", 10.0, "dkg");
+    val INGREDIENT2 = Ingredient("kifli", 20.0, "db");
     val DESCRIPTION1 = "És kész is a mákosguba.";
-    val INGREDIENT_LIST1: MutableList<Ingredient> = mutableListOf()
+    val INGREDIENT_LIST1: MutableList<Ingredient> = mutableListOf(INGREDIENT1, INGREDIENT2)
     val recipeList: MutableList<Recipe> = mutableListOf(
         Recipe(1, TITLE1, IMAGE1, INGREDIENT_LIST1, DESCRIPTION1),
         Recipe(2, "Almáspite", IMAGE1, INGREDIENT_LIST1, DESCRIPTION1)
