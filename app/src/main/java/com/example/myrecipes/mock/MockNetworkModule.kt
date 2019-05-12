@@ -8,26 +8,20 @@ import com.example.myrecipes.network.RecipeApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.jetbrains.annotations.Nullable
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
 class MockNetworkModule {
-
     private val networkModule = NetworkModule()
-
-//    @Provides
-//    @Singleton
-//    fun provideOkHttpClientBuilder(): OkHttpClient.Builder {
-////        return networkModule.provideOkHttpClientBuilder(settings)
-//    }
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
-        builder.interceptors().add(builder.interceptors().size, MockInterceptor())
-
-        return builder.build()
+    fun provideOkHttpClient(): OkHttpClient {
+        val interceptor = MockInterceptor()
+        return OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
 
     @Provides
@@ -38,7 +32,7 @@ class MockNetworkModule {
 
     @Provides
     @Singleton
-    fun provideStuffsApi(client: OkHttpClient): RecipeApi {
+    fun provideRecipeApi(client: OkHttpClient): RecipeApi {
         return networkModule.provideRecipeApi(client)
     }
 }

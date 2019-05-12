@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class RecipesInteractor @Inject constructor(private var recipeApi: RecipeApi)  {
 
-    fun getAllRecipes() {
+    fun getAllRecipes(): List<Recipe> {
         try {
             val recipeQuery = recipeApi.getAllRecipes()
             val response = recipeQuery.execute()
@@ -15,8 +15,13 @@ class RecipesInteractor @Inject constructor(private var recipeApi: RecipeApi)  {
             if (response.code() != 200) {
                 throw Exception("Result code is not 200")
             }
+            if (response.body().isNullOrEmpty()) {
+                return listOf()
+            }
+            return response.body() as List<Recipe>
         } catch (e: Exception) {
             Log.d(e.toString(),  "error in get all recipes");
+            return listOf()
         }
     }
 

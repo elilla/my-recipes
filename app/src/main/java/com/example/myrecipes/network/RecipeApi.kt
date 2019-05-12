@@ -9,6 +9,9 @@ interface RecipeApi {
     @GET("Recipe")
     fun getAllRecipes(): Call<List<Recipe>>
 
+    @GET("Recipe/{recipeId}")
+    fun getRecipeById(): Call<Recipe>
+
     @POST("Recipe")
     fun createRecipe(@Body recipe: Recipe): Call<ResponseBody>
 
@@ -16,5 +19,5 @@ interface RecipeApi {
     fun updateRecipe(@Path("recipeId") id: Long?, @Body recipe: Recipe): Call<ResponseBody>
 
     @DELETE("Recipe/{recipeId}")
-    fun deleteRecipe(@Path("id") id: Long?): Call<ResponseBody>
+    fun deleteRecipe(@Path("recipeId") id: Long?): Call<ResponseBody>
 }

@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 import android.arch.persistence.room.TypeConverters
 import com.example.myrecipes.repository.room.ListConverter
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(tableName = "recipes")
 class Recipe constructor(
@@ -21,4 +22,4 @@ class Recipe constructor(
     var ingredients: MutableList<Ingredient>? = null,
     @SerializedName("description")
     var description: String? = null
-)
+) :Serializable

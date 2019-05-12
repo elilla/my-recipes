@@ -1,6 +1,7 @@
 package com.example.myrecipes.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class Ingredient(
     @SerializedName("name")
@@ -9,4 +10,4 @@ class Ingredient(
     var quantity: Double? = null,
     @SerializedName ("unit")
     var unit: String? = null
-)
+): Serializable

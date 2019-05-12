@@ -27,7 +27,7 @@ class MockInterceptor : Interceptor {
 
         return when {
             path == null -> MockHelper.makeResponse(request, headers, 404, "Unknown")
-            path.startsWith(NetworkConfig.ENDPOINT_PREFIX + "recipe") -> RecipeMock.process(request)
+            path.startsWith(NetworkConfig.ENDPOINT_PREFIX + "Recipe") -> RecipeMock.process(request)
             else -> MockHelper.makeResponse(request, headers, 404, "Unknown")
         }
     }
