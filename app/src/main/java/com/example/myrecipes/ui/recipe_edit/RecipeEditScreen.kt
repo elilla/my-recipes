@@ -5,4 +5,5 @@ import com.example.myrecipes.model.Recipe
 interface RecipeEditScreen {
     fun showRecipe()
     fun updateRecipe()
+    fun updateIngredient()
 }

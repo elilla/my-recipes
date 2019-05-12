@@ -12,6 +12,9 @@ import com.google.gson.Gson
 import okhttp3.Request
 import okhttp3.Response
 import android.R.attr.path
+import android.arch.persistence.room.TypeConverter
+import com.google.gson.reflect.TypeToken
+import java.util.*
 
 
 object RecipeMock {
@@ -37,20 +40,40 @@ object RecipeMock {
         val responseCode: Int
         val headers = request.headers()
         val idPath = uri.path.substring(0, uri.path.lastIndexOf('/'))
-        // TODO every endpoint
+
         if (uri.path == NetworkConfig.ENDPOINT_PREFIX + "Recipe" && request.method() == "GET") {
 
             responseString = gson.toJson(recipeList);
             responseCode = 200
-        } else if (uri.path == NetworkConfig.ENDPOINT_PREFIX + "Recipe" && request.method() == "POST") {
-            // TODO
 
-            responseString = gson.toJson("asd");
+        } else if (uri.path == NetworkConfig.ENDPOINT_PREFIX + "Recipe" && request.method() == "POST") {
+
+            val newRecipe: Recipe = stringToRecipe(request)
+            recipeList.add(newRecipe)
+            println(newRecipe.title + "ASDASDASDASDAS")
+
+            responseString = gson.toJson("Successful create");
             responseCode = 200
+
+        } else if (idPath == NetworkConfig.ENDPOINT_PREFIX + "Recipe" && request.method() == "PUT") {
+
+            var recipeId = uri.path.substring(uri.path.lastIndexOf('/') + 1).toLong()
+            var oldRecipe = recipeList.find { recipe -> recipe.id == recipeId }
+            var oldRecipeId = recipeList.indexOf(oldRecipe);
+
+            var newRecipe: Recipe = stringToRecipe(request)
+            println(newRecipe.title + "ASDASDASDASDAS")
+            recipeList.set(oldRecipeId, newRecipe)
+
+            responseString = gson.toJson("Successful update");
+            responseCode = 200
+
         } else if (idPath == NetworkConfig.ENDPOINT_PREFIX + "Recipe" && request.method() == "DELETE") {
-            var recipeId = uri.path.substring(uri.path.lastIndexOf('/') +1).toLong()
+
+            var recipeId = uri.path.substring(uri.path.lastIndexOf('/') + 1).toLong()
             var deleteItem = recipeList.find { recipe -> recipe.id == recipeId }
             recipeList.remove(deleteItem)
+
             responseString = gson.toJson("Successful delete");
             responseCode = 200
         } else {
@@ -61,4 +84,14 @@ object RecipeMock {
         return MockHelper.makeResponse(request, headers, responseCode, responseString)
     }
 
+    @TypeConverter
+    private fun stringToRecipe(request: Request): Recipe {
+        if (request.body() == null) {
+            return Recipe()
+        }
+
+        val recipeType = object : TypeToken<Recipe>() {}.type
+        println(MockHelper.bodyToString(request) + "ASDASD")
+        return gson.fromJson(MockHelper.bodyToString(request), recipeType)
+    }
 }

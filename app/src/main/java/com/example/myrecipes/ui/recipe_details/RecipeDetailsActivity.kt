@@ -16,10 +16,11 @@ import java.net.URL
 import android.os.StrictMode
 import android.widget.ListView
 import android.widget.TextView
-import com.example.myrecipes.ui.utils.IngredientsAdapter
+import com.example.myrecipes.ui.main.MainActivity
+import com.example.myrecipes.ui.utils.IngredientsViewAdapter
 
 
-class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
+class RecipeDetailsActivity : AppCompatActivity(), RecipeDetailsScreen {
 
     @Inject
     lateinit var recipeDetailsPresenter: RecipeDetailsPresenter
@@ -33,14 +34,15 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
         injector.inject(this)
         ingredientsListView = findViewById<ListView>(R.id.ingredientsListView)
 
-        editButton.setOnClickListener{
+        editButton.setOnClickListener {
             recipeDetailsPresenter.editRecipe()
         }
 
-        deleteButton.setOnClickListener{
+        deleteButton.setOnClickListener {
             recipeDetailsPresenter.deleteRecipe(recipe)
         }
     }
+
     override fun onStart() {
         super.onStart()
         recipeDetailsPresenter.attachScreen(this)
@@ -53,6 +55,10 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
         recipeDetailsPresenter.detachScreen()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun showRecipe() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -60,14 +66,14 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
     override fun editRecipe() {
         val intent = Intent(this, RecipeEditActivity::class.java)
         intent.putExtra(RECIPE, recipe)
-        startActivity(intent)
+        startActivityForResult(intent, 1)
     }
 
     override fun deleteRecipe() {
         finish()
     }
 
-    private fun setViewData(){
+    private fun setViewData() {
         if (android.os.Build.VERSION.SDK_INT > 9) {
             val policy = StrictMode.ThreadPolicy.Builder()
                 .permitAll().build()
@@ -80,8 +86,15 @@ class RecipeDetailsActivity: AppCompatActivity(), RecipeDetailsScreen {
         findViewById<TextView>(R.id.recipeTitle).setText(recipe.title)
         findViewById<TextView>(R.id.descriptionText).setText(recipe.description)
 
-        val adapter = IngredientsAdapter(this, recipe.ingredients)
+        val adapter = IngredientsViewAdapter(this, recipe.ingredients)
         ingredientsListView.adapter = adapter
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 1) {
+            finish()
+        }
+        // TODO Auto-generated method stub
     }
 
 }

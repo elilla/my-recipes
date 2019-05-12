@@ -9,8 +9,8 @@ import android.widget.TextView
 import com.example.myrecipes.R
 import com.example.myrecipes.model.Ingredient
 
-class IngredientsAdapter(private val context: Context,
-                         private val dataSource: MutableList<Ingredient>) : BaseAdapter() {
+class IngredientsViewAdapter(private val context: Context,
+                             private val dataSource: MutableList<Ingredient>) : BaseAdapter() {
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

@@ -3,8 +3,6 @@ package com.example.myrecipes.model
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import android.arch.persistence.room.TypeConverters
-import com.example.myrecipes.repository.room.ListConverter
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -19,7 +17,7 @@ class Recipe constructor(
     @Embedded
     var image: Image = Image(),
     @SerializedName("ingredients")
-    var ingredients: MutableList<Ingredient> = mutableListOf<Ingredient>(),
+    var ingredients: MutableList<Ingredient> = mutableListOf<Ingredient>(Ingredient("",0.0,"")),
     @SerializedName("description")
     var description: String? = null
 ) :Serializable
