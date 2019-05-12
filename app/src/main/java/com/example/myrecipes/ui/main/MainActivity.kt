@@ -57,13 +57,11 @@ class MainActivity : AppCompatActivity(), MainScreen {
         for (i in 0 until recipeList.size) {
             val recipe = recipeList[i]
             listItems[i] = recipe.title
-            println(recipe.title)
         }
-        println(listItems.size)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
         listView.adapter = adapter
         listView.setOnItemClickListener { _, _, position, _ ->
-            openSelectedRecipe(position)
+            mainPresenter.openSelectedRecipe(position)
         }
 
     }

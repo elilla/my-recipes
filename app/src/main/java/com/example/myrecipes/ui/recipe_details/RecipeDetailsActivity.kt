@@ -55,14 +55,6 @@ class RecipeDetailsActivity : AppCompatActivity(), RecipeDetailsScreen {
         recipeDetailsPresenter.detachScreen()
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun showRecipe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun editRecipe() {
         val intent = Intent(this, RecipeEditActivity::class.java)
         intent.putExtra(RECIPE, recipe)

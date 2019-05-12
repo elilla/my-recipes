@@ -63,10 +63,6 @@ class RecipeEditActivity : AppCompatActivity(), RecipeEditScreen {
         recipeEditPresenter.detachScreen()
     }
 
-    override fun showRecipe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun updateIngredient(){
         var adapter = IngredientsViewAdapter(this, recipe.ingredients)
         ingredientsList.adapter = adapter

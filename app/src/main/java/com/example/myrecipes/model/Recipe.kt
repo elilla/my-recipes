@@ -17,7 +17,7 @@ class Recipe constructor(
     @Embedded
     var image: Image = Image(),
     @SerializedName("ingredients")
-    var ingredients: MutableList<Ingredient> = mutableListOf<Ingredient>(Ingredient("",0.0,"")),
+    var ingredients: MutableList<Ingredient> = mutableListOf<Ingredient>(),
     @SerializedName("description")
     var description: String? = null
 ) :Serializable

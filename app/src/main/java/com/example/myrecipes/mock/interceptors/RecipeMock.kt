@@ -21,15 +21,18 @@ object RecipeMock {
 
     var gson = Gson()
 
-    val TITLE1 = "Mákosguba"
-    val IMAGE1 = Image("http://www.mindmegette.hu/images/231/O/img_4557.jpg", 100, 100);
     val INGREDIENT1 = Ingredient("mák", 10.0, "dkg");
     val INGREDIENT2 = Ingredient("kifli", 20.0, "db");
-    val DESCRIPTION1 = "És kész is a mákosguba.";
     val INGREDIENT_LIST1: MutableList<Ingredient> = mutableListOf(INGREDIENT1, INGREDIENT2)
     val recipeList: MutableList<Recipe> = mutableListOf(
-        Recipe(1, TITLE1, IMAGE1, INGREDIENT_LIST1, DESCRIPTION1),
-        Recipe(2, "Almáspite", IMAGE1, INGREDIENT_LIST1, DESCRIPTION1)
+        Recipe(1, "Mákosguba",
+            Image("http://www.mindmegette.hu/images/231/O/img_4557.jpg", 100, 100),
+            INGREDIENT_LIST1,
+            "És kész is a mákosguba."),
+        Recipe(2, "Almáspite",
+            Image("http://www.mindmegette.hu/images/231/O/img_4557.jpg", 100, 100),
+            INGREDIENT_LIST1,
+            "És kész is az almáspite.")
     )
 
 
@@ -50,7 +53,6 @@ object RecipeMock {
 
             val newRecipe: Recipe = stringToRecipe(request)
             recipeList.add(newRecipe)
-            println(newRecipe.title + "ASDASDASDASDAS")
 
             responseString = gson.toJson("Successful create");
             responseCode = 200
@@ -62,7 +64,6 @@ object RecipeMock {
             var oldRecipeId = recipeList.indexOf(oldRecipe);
 
             var newRecipe: Recipe = stringToRecipe(request)
-            println(newRecipe.title + "ASDASDASDASDAS")
             recipeList.set(oldRecipeId, newRecipe)
 
             responseString = gson.toJson("Successful update");
@@ -91,7 +92,6 @@ object RecipeMock {
         }
 
         val recipeType = object : TypeToken<Recipe>() {}.type
-        println(MockHelper.bodyToString(request) + "ASDASD")
         return gson.fromJson(MockHelper.bodyToString(request), recipeType)
     }
 }

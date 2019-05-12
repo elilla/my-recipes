@@ -8,6 +8,7 @@ import javax.inject.Inject
 class MainPresenter @Inject constructor(private val recipesInteractor: RecipesInteractor) : Presenter<MainScreen>() {
     fun showAllRecipesList() {
         val allRecipes: List<Recipe> = recipesInteractor.getAllRecipes();
+        println(allRecipes.toString())
         screen?.showAllRecipes(allRecipes)
     }
 
@@ -15,8 +16,8 @@ class MainPresenter @Inject constructor(private val recipesInteractor: RecipesIn
         screen?.addNewRecipe()
     }
 
-    fun openSelectedRecipe(recipe: Recipe){
-
+    fun openSelectedRecipe(position: Int){
+        screen?.openSelectedRecipe(position)
     }
 
 }

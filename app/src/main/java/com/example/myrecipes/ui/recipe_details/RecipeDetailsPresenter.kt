@@ -6,10 +6,6 @@ import com.example.myrecipes.ui.Presenter
 import javax.inject.Inject
 
 class RecipeDetailsPresenter @Inject constructor(private val recipesInteractor: RecipesInteractor): Presenter<RecipeDetailsScreen>() {
-    fun showRecipeDetails(){
-        screen?.showRecipe()
-    }
-
     fun editRecipe(){
         screen?.editRecipe()
     }

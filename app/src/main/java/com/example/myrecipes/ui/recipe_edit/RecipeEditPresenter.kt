@@ -8,9 +8,6 @@ import javax.inject.Inject
 
 class RecipeEditPresenter @Inject constructor(private val recipesInteractor: RecipesInteractor) :
     Presenter<RecipeEditScreen>() {
-    fun showRecipeEdit() {
-        screen?.showRecipe()
-    }
 
     fun updateRecipe(recipe: Recipe) {
         if (recipe.id != null) {
