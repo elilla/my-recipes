@@ -2,21 +2,23 @@ package com.example.myrecipes.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import com.example.myrecipes.MyRecipesApplication
 import com.example.myrecipes.R
 import com.example.myrecipes.injector
 import com.example.myrecipes.model.Recipe
 import com.example.myrecipes.ui.recipe_details.RecipeDetailsActivity
 import com.example.myrecipes.ui.recipe_edit.RecipeEditActivity
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import io.fabric.sdk.android.Fabric
+import com.crashlytics.android.Crashlytics
+
 
 class MainActivity : AppCompatActivity(), MainScreen {
 
@@ -36,14 +38,17 @@ class MainActivity : AppCompatActivity(), MainScreen {
 
         listView = findViewById<ListView>(R.id.recipe_list_view)
 
-
+        Fabric.with(this, Crashlytics())
     }
 
     override fun onStart() {
         super.onStart()
         mainPresenter.attachScreen(this)
         mainPresenter.showAllRecipesList()
-
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "MainActivity has been started.")
+        val application = application as MyRecipesApplication
+        application.getFirebase().logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
     }
 
     override fun onStop() {

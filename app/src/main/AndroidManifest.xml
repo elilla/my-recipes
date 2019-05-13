@@ -30,4 +30,9 @@
                 android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
+    <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="8f9643fd5f726418ea0cc86c70d73edf1f1400f4"
+    />
+
 </manifest>
